@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace：命名空间，用于隔离sql-->
+<mapper namespace="com.fenqing168.school.api.dao.UserDao">
+
+
+    <!--javabean查询对象-->
+    <select id="queryObjectByBean" parameterType="com.fenqing168.school.api.pojo.UserEntity"
+            resultType="com.fenqing168.school.api.pojo.UserEntity">
+        select * from school_user
+        <where>
+            <if test="uid != null">
+                and uid = #{uid}
+            </if>
+            <if test="email != null">
+                and email = #{email}
+            </if>
+            <if test="username != null">
+                and username = #{username}
+            </if>
+            <if test="icon != null">
+                and icon = #{icon}
+            </if>
+            <if test="password != null">
+                and password = #{password}
+            </if>
+            <if test="salt != null">
+                and salt = #{salt}
+            </if>
+            <if test="sex != null">
+                and sex = #{sex}
+            </if>
+            <if test="phone != null">
+                and phone = #{phone}
+            </if>
+            <if test="bornDate != null">
+                and born_date = #{bornDate}
+            </if>
+            <if test="ip != null">
+                and ip = #{ip}
+            </if>
+            <if test="city != null">
+                and city = #{city}
+            </if>
+            <if test="province != null">
+                and province = #{province}
+            </if>
+            <if test="country != null">
+                and country = #{country}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime}
+            </if>
+            <if test="updateTime != null">
+                and update_time = #{updateTime}
+            </if>
+        </where>
+    </select>
+
+    <!--添加-->
+    <insert id="insert" parameterType="com.fenqing168.school.api.pojo.UserEntity">
+        insert into school_user
+        <trim prefix="(" suffixOverrides="," suffix=")">
+            <if test="uid != null">
+                uid,
+            </if>
+            <if test="username != null">
+                username,
+            </if>
+            <if test="icon != null">
+                icon,
+            </if>
+            <if test="email != null">
+                email,
+            </if>
+            <if test="nickName != null">
+                nick_name,
+            </if>
+            <if test="password != null">
+                password,
+            </if>
+            <if test="salt != null">
+                salt,
+            </if>
+            <if test="sex != null">
+                sex,
+            </if>
+            <if test="phone != null">
+                phone,
+            </if>
+            <if test="bornDate != null">
+                born_date,
+            </if>
+            <if test="ip != null">
+                ip,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="city != null">
+                city,
+            </if>
+            <if test="province != null">
+                province,
+            </if>
+            <if test="country != null">
+                country,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+        </trim>
+        values
+        <trim prefix="(" suffixOverrides="," suffix=")">
+            <if test="uid != null">
+                #{uid},
+            </if>
+            <if test="username != null">
+                #{username},
+            </if>
+            <if test="icon != null">
+                #{icon},
+            </if>
+            <if test="email != null">
+                #{email},
+            </if>
+            <if test="nickName != null">
+                #{nickName},
+            </if>
+            <if test="password != null">
+                #{password},
+            </if>
+            <if test="salt != null">
+                #{salt},
+            </if>
+            <if test="sex != null">
+                #{sex},
+            </if>
+            <if test="phone != null">
+                #{phone},
+            </if>
+            <if test="bornDate != null">
+                #{bornDate},
+            </if>
+            <if test="ip != null">
+                #{ip},
+            </if>
+            <if test="status != null">
+                #{status},
+            </if>
+            <if test="city != null">
+                #{city},
+            </if>
+            <if test="province != null">
+                #{province},
+            </if>
+            <if test="country != null">
+                #{country},
+            </if>
+            <if test="createTime != null">
+                #{createTime},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime},
+            </if>
+        </trim>
+    </insert>
+
+</mapper>

@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="school-pageapi:war">
+    <output-path>$PROJECT_DIR$/school-pageapi/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>school-pageapi</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="school-pageapi-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="school-pageapi:war exploded" />
+    </root>
+  </artifact>
+</component>
