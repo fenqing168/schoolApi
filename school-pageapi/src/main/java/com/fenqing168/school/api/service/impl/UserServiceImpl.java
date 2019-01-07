@@ -1,5 +1,6 @@
 package com.fenqing168.school.api.service.impl;
 
+import com.fenqing168.school.api.common.utils.CryptoUtil;
 import com.fenqing168.school.api.common.utils.IpUtil;
 import com.fenqing168.school.api.common.utils.PasswordEncoderUtil;
 import com.fenqing168.school.api.common.vo.R;
@@ -80,5 +81,40 @@ public class UserServiceImpl implements UserService {
         int num = userDao.insert(user);
 
         return R.ok("注册成功！");
+    }
+
+    /**
+     * 登陆
+     * @param email 邮箱
+     * @param password 密码
+     * @return
+     */
+    public R login(String email, String password) {
+
+        if(email == null){
+            return R.error("邮箱不能为空！");
+        }
+
+        if(password == null){
+            return R.error("密码不能为null");
+        }
+
+        UserEntity user = new UserEntity();
+        user.setEmail(email);
+        user = userDao.queryObjectByBean(user);
+
+        if(user == null){
+            return R.error(email + "用户不存在！");
+        }
+
+        PasswordEncoderUtil passwordEncoder = new PasswordEncoderUtil(user.getSalt(), "MD5");
+        password = passwordEncoder.encode(password);
+        if(!password.equals(user.getPassword())){
+            return R.error("用户名或者密码错误！");
+        }
+
+        String token = CryptoUtil.encode64(CryptoUtil.DEFAULT_SECRET_KEY1, user.getUid());
+
+        return R.ok("登陆成功", token);
     }
 }

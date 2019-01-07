@@ -28,6 +28,17 @@ public class UserController {
         return userService.register(code, email, password, session, req);
     }
 
+    /**
+     * 登陆
+     * @param email 邮箱
+     * @param password 密码
+     * @return
+     */
+    @PostMapping("login")
+    public R login(@RequestParam("login") String email, String password){
+        return userService.login(email, password);
+    }
+
 
 
 }

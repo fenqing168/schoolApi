@@ -18,4 +18,12 @@ public interface UserService {
      * @return
      */
     R register(String code, String email, String password, HttpSession session, HttpServletRequest req);
+
+    /**
+     * 登陆
+     * @param email 邮箱
+     * @param password 密码
+     * @return
+     */
+    R login(String email, String password);
 }
